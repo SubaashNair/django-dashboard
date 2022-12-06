@@ -9,6 +9,9 @@ matplotlib = "*"
 numpy = "*"
 seaborn = "*"
 plotly = "*"
+whitenoise = "*"
+pytest = "*"
+gunicorn = "*"
 
 [dev-packages]
 black = "*"

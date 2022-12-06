@@ -11,7 +11,9 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
+# SECRET_KEY = os.environ["SECRET_KEY"]
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,9 +23,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "django-insecure-xn+c=nyl!&dl07#yum8%tctrc9gk_5h79@%j2!qe-o@duqw+wt"
+# SECRET_KEY = os.environ.get(
+#     "DJANGO_SECRET_KEY",
+#     "django-insecure-xn+c=nyl!&dl07#yum8%tctrc9gk_5h79@%j2!qe-o@duqw+wt",
+# )
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
+# DEBUG = os.environ.get("DJANGO_DEBUG", "") != "False"
 
 ALLOWED_HOSTS = ["*"]
 
@@ -113,6 +120,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = "static/"
+STATIC_ROOT = os.path.normpath(os.path.join(BASE_DIR, "staticfiles"))
+STATICFILES_DIRS = (os.path.join(BASE_DIR, "plotApp/static"),)
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
